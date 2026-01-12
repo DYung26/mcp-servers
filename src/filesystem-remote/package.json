@@ -1,0 +1,38 @@
+{
+  "name": "@modelcontextprotocol/server-filesystem-remote",
+  "version": "0.1.0",
+  "description": "Remote filesystem MCP server with HTTP/SSE support",
+  "private": false,
+  "type": "module",
+  "bin": {
+    "mcp-server-filesystem-remote": "./dist/index.js"
+  },
+  "scripts": {
+    "build": "tsc && shx chmod +x dist/*.js",
+    "prepare": "npm run build",
+    "watch": "tsc --watch",
+    "start:sse": "node dist/index.js sse",
+    "start:http": "node dist/index.js streamableHttp",
+    "start": "npm run start:http",
+    "dev:sse": "node --loader ts-node/esm ./index.ts sse",
+    "dev:http": "node --loader ts-node/esm ./index.ts streamableHttp"
+  },
+  "files": [
+    "dist"
+  ],
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.0.4",
+    "cors": "^2.8.5",
+    "express": "^4.21.2",
+    "minimatch": "^10.0.1",
+    "zod": "^3.24.1"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.17",
+    "@types/express": "^5.0.0",
+    "@types/node": "^22.10.2",
+    "shx": "^0.3.4",
+    "ts-node": "^10.9.1",
+    "typescript": "^5.2.2"
+  }
+}
